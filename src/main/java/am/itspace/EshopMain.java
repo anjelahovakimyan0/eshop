@@ -114,6 +114,10 @@ public class EshopMain implements Command {
         int quantity = Integer.parseInt(SCANNER.nextLine());
         System.out.println("Please input product's category id");
         int categoryId = Integer.parseInt(SCANNER.nextLine());
+        if (categoryManager.getCategoryById(categoryId) == null) {
+            System.out.println("Category with " + categoryId + " id does not exists");
+            return;
+        }
         Product product = new Product(id, name, description, price, quantity,
                 categoryManager.getCategoryById(categoryId));
         productManager.editProductById(product);
